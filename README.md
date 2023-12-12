@@ -56,7 +56,7 @@ python manage.py runserver
 
 ```bash
 {
-  "stext": "your_search_text",
+  "stext": "your search text",
   "scount": 5
 }
 ```
