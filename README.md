@@ -67,5 +67,5 @@ python manage.py runserver
 
 Adjust the values of "stext" and "scount" as needed.
 4) The API will search for the specified text in Google Images and save the specified number of images in the media folder.
-```
+
 
