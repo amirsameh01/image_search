@@ -17,10 +17,9 @@ class ImageFinder(APIView):
         search_param = request.POST.get('stext')
         image_count = int(request.POST.get('scount', 5))
         
-        # Create scraper instance
         scraper = ImageScraper()  
         
-        # Call methods on instance 
+        # Get images 
         images_urls = scraper.get_images(search_param, image_count)
         
         # # Resize

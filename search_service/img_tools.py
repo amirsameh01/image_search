@@ -19,15 +19,14 @@ class ImageScraper():
         options.add_argument("--headless=new")
         self.driver = webdriver.Chrome(options=options)
         
+    #Searching for images
     def setup(self, search_param):
         url = "https://www.google.com/search?safe=off&site=&tbm=isch&source=hp&q={s}&oq={s}&gs_l=img"
         self.driver.get(url.format(s=search_param)) 
 
-
+    # Getting images
     def get_images(self, search_param, image_count):
         
-        # Selenium logic to search and download images
-        # Returns list of images
         self.setup(search_param)
         
         image_urls = []
@@ -35,10 +34,8 @@ class ImageScraper():
     
         while num_downloaded < image_count:
 
-            # Scroll to end of page 
             self.scroll_to_end()
 
-            # Get images 
             images = self.driver.find_elements(By.CSS_SELECTOR, "img.rg_i.Q4LuWd")
             
             for img in images:
@@ -51,39 +48,38 @@ class ImageScraper():
 
         return image_urls
 
+    # Scrolling google images page
     def scroll_to_end(self):
 
         last_height = self.driver.execute_script("return document.body.scrollHeight")
 
         while True:
 
-            # Scroll down to bottom
             self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 
-            # Wait for page to load
             time.sleep(2)
 
-            # Calculate new scroll height and compare with last scroll height
             new_height = self.driver.execute_script("return document.body.scrollHeight")
             if new_height == last_height:
                 break
 
             last_height = new_height
         time.sleep(0.5)
-        
+    
+    #Resizing selected images
     def resize_images(self, image_urls):  
         
         resized_images = []
         for src in image_urls:  
             if src.startswith('data:'):
-                # Base64 decode and resize
+                # Base64 decode
                 image_data = src.split(',')[1]
                 image_bytes = base64.b64decode(image_data)  
                 img = Image.open(io.BytesIO(image_bytes))
             
 
             else:
-                # Direct link - download and resize
+                # Direct link - download
                 response = requests.get(src)   
                 img = Image.open(io.BytesIO(response.content))
 
@@ -97,7 +93,7 @@ class ImageScraper():
 
         return list(resized_images)
 
-
+    # Saving final images into the media root and db
     def save_images(self, image_data):
           
           for img_data in image_data:
