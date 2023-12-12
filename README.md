@@ -28,7 +28,8 @@ pip install -r requirements.txt
 ```
 ### Configuration
 
-1) Download ChromeDriver (Version 119) or your preferred WebDriver and replace the existing chromedriver.exe in the project directory.
+1) Download ChromeDriver and replace the existing chromedriver.exe in the project directory from the link below.
+   https://chromedriver.chromium.org/downloads
 
 2) Create a .env file in the project directory with the following content:
 ```bash
