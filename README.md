@@ -1,6 +1,6 @@
 # Django Selenium Image Search API
 
-A Django API that accepts POST requests to the `/search/` endpoint. The API searches for the specified text (`stext`) in Google Images and saves the specified number of images (`scount`) in a folder named `media` in the project directory (`MEDIA_ROOT).
+A Django API that accepts POST requests to the `/search/` endpoint. The API searches for the specified text (`stext`) in Google Images and findes the specified number of images (`scount`) & resizes them according to the defined scales(scales are defined in settings.py ln134). finally the service will save the resized images in a folder named `media` in the project directory (`MEDIA_ROOT, defined in settings.py ln130).
 
 ## Table of Contents
 
