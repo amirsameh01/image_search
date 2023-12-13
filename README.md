@@ -18,11 +18,15 @@ A Django API that accepts POST requests to the `/search/` endpoint. The API sear
 - WebDriver
 
 ### Installation
-1) Activate the virtual environment:
+1) Create a virtual environment:
+```bash
+python -m venv venv
+```
+2) Activate the virtual environment:
 ```bash
 venv\Scripts\activate
 ```
-2) Install project dependencies:
+3) Install project dependencies:
 ```bash
 pip install -r requirements.txt
 ```
