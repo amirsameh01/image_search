@@ -56,16 +56,17 @@ python manage.py migrate
 ```bash
 python manage.py runserver
 ```
-3) Send a POST request to the /search/ endpoint with the following JSON payload:
+3) Send a POST request (using form) to the /search/ endpoint with the following payload:
 
 ```bash
-{
+
   "stext": "your search text",
   "scount": 5
-}
+
 ```
 
 Adjust the values of "stext" and "scount" as needed.
+
 4) The API will search for the specified text in Google Images and save the specified number of images in the media folder.
 
 
